@@ -8,25 +8,22 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('layouts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('floor_id')->constrained()->cascadeOnDelete();
             $table->string('name', 100);
-            $table->string('email', 150)->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->string('image_path');
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->string('avatar')->nullable();
-            $table->rememberToken();
             $table->timestamps();
 
-            $table->index('role');
             $table->index('is_active');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('layouts');
     }
 };
