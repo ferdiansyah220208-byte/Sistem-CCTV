@@ -7,16 +7,21 @@ use App\Http\Controllers\Admin\FloorController;
 use App\Http\Controllers\Admin\LayoutController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Public\HomeController;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Public\HomeController;
+
 
 // ============ PUBLIC ============
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/buildings', [HomeController::class, 'buildings'])->name('public.buildings');
-Route::get('/buildings/{building}', [HomeController::class, 'floors'])->name('public.floors');
-Route::get('/floors/{floor}', [HomeController::class, 'rooms'])->name('public.rooms');
-Route::get('/rooms/{room}', [HomeController::class, 'detail'])->name('public.room.detail');
-Route::get('/search', [HomeController::class, 'search'])->name('public.search');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/buildings', [HomeController::class, 'buildings'])->name('public.buildings');
+// Route::get('/buildings/{building}', [HomeController::class, 'floors'])->name('public.floors');
+// Route::get('/floors/{floor}', [HomeController::class, 'rooms'])->name('public.rooms');
+// Route::get('/rooms/{room}', [HomeController::class, 'detail'])->name('public.room.detail');
+// Route::get('/search', [HomeController::class, 'search'])->name('public.search');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 // ============ AUTH ============
 Route::middleware('guest')->group(function () {
